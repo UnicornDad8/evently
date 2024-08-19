@@ -9,7 +9,9 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
   const userId = user?.publicMetadata.userId as string;
   const hasEventFinished = new Date(event.endDateTime) < new Date();
 
-  return <div className="flex items-center gap-3">Checkout Button</div>;
+  return (
+    <div className="flex items-center gap-3 bg-red-400">Checkout Button</div>
+  );
 };
 
 export default CheckoutButton;
