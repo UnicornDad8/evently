@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import CategoryFilter from "@/components/shared/CategoryFilter";
 import Collection from "@/components/shared/Collection";
 import Search from "@/components/shared/Search";
-import CategoryFilter from "@/components/shared/CategoryFilter";
+import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/event.actions";
 import { SearchParamProps } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
@@ -31,10 +31,11 @@ export default async function Home({ searchParams }: SearchParamProps) {
               Book and learn helpful tips from 3,168+ mentors in world-class
               companies with our global community.
             </p>
-            <Button asChild size="lg" className="button w-full sm:w-fit">
+            <Button size="lg" asChild className="button w-full sm:w-fit">
               <Link href="#events">Explore Now</Link>
             </Button>
           </div>
+
           <Image
             src="/assets/images/hero.png"
             alt="hero"
@@ -52,6 +53,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <h2 className="h2-bold">
           Trust by <br /> Thousands of Events
         </h2>
+
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search />
           <CategoryFilter />
@@ -63,8 +65,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
           limit={6}
-          page={1}
-          totalPages={2}
+          page={page}
+          totalPages={events?.totalPages}
         />
       </section>
     </>
